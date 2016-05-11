@@ -14,6 +14,7 @@ import numpy as np
 import collections
 import random
 import code
+import sys
 
 __author__ = "Alexander Elkholy"
 __license__ = "MIT"
@@ -28,6 +29,8 @@ def main():
     lamb_rng = np.arange(pow(10,-1.1),pow(10,1.1))
     gamma_rng = np.arange(pow(10,-1.1),pow(10,1.1))
 
+    digits_to_try = [4,7,8,3,9,1]
+
     #The rows in this matrix will represent the lambda parameter;
     #The columns will represent the gamma parameter
     #The lambda and gamma values will increase with the index. That is,
@@ -37,17 +40,21 @@ def main():
     results_mean = np.zeros([np.size(lamb_rng),np.size(gamma_rng)])
     results_std = np.zeros([np.size(lamb_rng),np.size(gamma_rng)])
 
-    for j in range(np.size(lamb_rng)):
-        print str(j)
-        for k in range(np.size(gamma_rng)):
+    for j in lamb_rng:
+        for k in gamma_rng:
             runs_correct_percent = []
             for a in range(runs):
                 #Process the data
-                processed = load_data()
+                processed = load_data(digits_to_try)
 
                 #Calculate the matrices on the training data
                 S = get_signature(processed.training_data, processed.training_labels) # S is a x z
-                V = get_V(processed.training_data, processed.training_labels, S, 1, .5)  #V is d x a
+                try:
+                    V = get_V(processed.training_data, processed.training_labels, S, j, k)  #V is d x a
+                except np.linalg.linalg.LinAlgError:
+                    print "Lambda " + str(j)
+                    print "Gamma " + str(k)
+                    sys.exit(1)
                 W = np.dot(V,S) #W is d x z
                 S_prime = get_signature(processed.testing_data, processed.testing_labels)
 
