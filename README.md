@@ -1,4 +1,4 @@
-# Embarrassing Zero Shot Implementation
+# Embarrassingly Simple Zero Shot Implementation
 This branch includes an implementation of
 
 Romera-Paredes, Bernardino, and P. H. S. Torr.
@@ -12,6 +12,5 @@ https://github.com/bernard24/Embarrassingly-simple-ZSL
 https://dl.dropboxusercontent.com/u/5961057/ESZSL_v0.1.zip
 
 # Note
-
-I borrowed from the idea in https://github.com/MLWave/extremely-simple-one-shot-learning by using 2 components from PCA and LLA (Locally Linear Embedding) as features.
+I borrowed from the idea in https://github.com/MLWave/extremely-simple-one-shot-learning by using 2 components from PCA and LLA (Locally Linear Embedding) as features to classify the digits dataset from sklearn.
 Overall it uses the same exact approach as the paper to calculate V and W.
