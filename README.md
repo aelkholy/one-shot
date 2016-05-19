@@ -1,9 +1,11 @@
 # Embarrassingly Simple Zero Shot Implementation
-This branch includes an implementation of
+This branch includes an implementation in python of the paper:
 
 Romera-Paredes, Bernardino, and P. H. S. Torr.
 "An embarrassingly simple approach to zero-shot learning."
 Proceedings of The 32nd International Conference on Machine Learning. 2015.
+
+
 
 http://jmlr.org/proceedings/papers/v37/romera-paredes15.pdf
 
